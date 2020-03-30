@@ -968,7 +968,7 @@ static void parse_options(int argc, char **argv, oe_options *opt)
                     opt->raw_samplesize = 16; /* Failed, so just set to 16 */
                     fprintf(stderr, _("WARNING: Invalid bits/sample specified, assuming 16.\n"));
                 }
-                if((opt->raw_samplesize != 8) && (opt->raw_samplesize != 16))
+                if((opt->raw_samplesize != 8) && (opt->raw_samplesize != 16) && (opt->raw_samplesize != 24) && (opt->raw_samplesize != 32))
                 {
                     fprintf(stderr, _("WARNING: Invalid bits/sample specified, assuming 16.\n"));
                 }
