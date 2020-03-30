@@ -674,7 +674,8 @@ long wav_read(void *in, float **buffer, int samples)
     }
     else if(f->samplesize==24) 
     {
-        if(!f->bigendian) {
+        if(!f->bigendian) 
+        {
             for(i = 0; i < realsamples; i++)
             {
                 for(j=0; j < f->channels; j++) 
@@ -687,7 +688,8 @@ long wav_read(void *in, float **buffer, int samples)
                 }
             }
         }
-        else {
+        else 
+        {
             fprintf(stderr, _("Big endian 24 bit PCM data is not currently "
                               "supported, aborting.\n"));
             return 0;
@@ -695,12 +697,13 @@ long wav_read(void *in, float **buffer, int samples)
     }
     else if(f->samplesize==32) 
     {
-        if(!f->bigendian) {
+        if(!f->bigendian) 
+        {
             for(i = 0; i < realsamples; i++)
             {
                 for(j=0; j < f->channels; j++) 
                 {
-                    buffer[j][i] = ((buf[i*4*f->channels + 4*ch_permute[j] + 3] << 24 |
+                    buffer[j][i] = ((buf[i*4*f->channels + 4*ch_permute[j] + 3] << 24) |
                       (((unsigned char *)buf)[i*4*f->channels + 4*ch_permute[j] + 2] << 16) |
                       (((unsigned char *)buf)[i*4*f->channels + 4*ch_permute[j] + 1] << 8) |
                       (((unsigned char *)buf)[i*4*f->channels + 4*ch_permute[j]] & 0xff)) 
@@ -709,13 +712,15 @@ long wav_read(void *in, float **buffer, int samples)
                 }
             }
         }
-        else {
+        else 
+        {
             fprintf(stderr, _("Big endian 32 bit PCM data is not currently "
                               "supported, aborting.\n"));
             return 0;
         }
     }
-    else {
+    else 
+    {
         fprintf(stderr, _("Internal error: attempt to read unsupported "
                           "bitdepth %d\n"), f->samplesize);
         return 0;
